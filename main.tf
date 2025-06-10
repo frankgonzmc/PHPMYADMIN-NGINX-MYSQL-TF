@@ -33,6 +33,28 @@ resource "docker_container" "mysql"{
     restart = "always"
 }
 
+#PHPMYADMIN
+resource "docker_image" "phpmyadmin"{
+    name = "phpmyadmin/phpmyadmin:latest"
+    keep_locally = false
+}
+
+resource "docker_container" "phpmyadmin"{
+    name = "phpmyadmin_container"
+    image = docker_image.phpmyadmin.image_id
+    env = [
+        "PMA_HOST=mysql_container",
+        "PMA_PORT=3306"
+    ]
+    ports {
+        internal = var.phpmyadmin_port_internal
+        external = var.phpmyadmin_port_external
+    }
+    networks_advanced {
+        name = docker_network.private_network.name
+    }
+    depends_on = [docker_container.mysql]
+}
 
 
 

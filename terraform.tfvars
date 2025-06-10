@@ -6,3 +6,6 @@ mysql_root_password = "root_frank"
 mysql_database = "TestDB"
 mysql_user = "frank"
 mysql_password = "frank_test"
+#PHPMYADMIN
+phpmyadmin_port_internal = 80
+phpmyadmin_port_external = 8081

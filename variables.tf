@@ -33,3 +33,14 @@ variable "mysql_password" {
     description = "Contraseña del usuario Mysql"
     type = string
 }
+
+#Variables para el modulo de phpmyadmin
+variable "phpmyadmin_port_internal" {
+    description = "Puerto interno de phpmyadmin"
+    type = number
+}
+
+variable "phpmyadmin_port_external" {
+    description = "Puerto externo de phpmyadmin"
+    type = number
+}
