@@ -56,7 +56,24 @@ resource "docker_container" "phpmyadmin"{
     depends_on = [docker_container.mysql]
 }
 
+# NGINX
+resource "docker_image" "nginx"{
+    name = var.nginx_version
+    keep_locally = false
+}
 
+resource "docker_container" "nginx"{
+    name = "nginx_container"
+    image =  docker_image.nginx.image_id
+    ports {
+        internal = var.nginx_port_internal
+        external = var.nginx_port_external
+    }
+    networks_advanced {
+        name = docker_network.private_network.name
+    }
+    depends_on = [ docker_container.mysql ]
+}
 
 
 

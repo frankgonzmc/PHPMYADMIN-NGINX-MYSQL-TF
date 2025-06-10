@@ -44,3 +44,19 @@ variable "phpmyadmin_port_external" {
     description = "Puerto externo de phpmyadmin"
     type = number
 }
+
+#Variables para el modulo de nginx
+variable "nginx_port_internal" {
+    description = "Puerto interno de nginx"
+    type = number
+}
+
+variable "nginx_port_external" {
+    description = "Puerto externo de nginx"
+    type = number
+}
+
+variable "nginx_version"{
+    description = "Version de nginx a instalar"
+    type = string
+}
